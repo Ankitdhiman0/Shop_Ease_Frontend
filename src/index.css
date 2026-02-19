@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("/Montserrat-Regular.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("/Poppins-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MouseMemoirs";
+  src: url("/MouseMemoirs-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Normal text uses Poppins */
+body,
+p,
+span,
+small,
+li,
+button,
+input,
+a {
+  font-family: "Poppins", sans-serif;
+}
+
+/* Decorative text */
+.special-text {
+  font-family: "MouseMemoirs", sans-serif;
+}
+
+@keyframes jitter {
+  0%,
+  100% {
+    transform: translateX(0) translateY(0) rotate(0deg) scale(1);
+  }
+  10% {
+    transform: translateX(-1px) translateY(-1px) rotate(-0.5deg) scale(1.02);
+  }
+  20% {
+    transform: translateX(1px) translateY(1px) rotate(0.5deg) scale(0.98);
+  }
+  30% {
+    transform: translateX(-1px) translateY(0px) rotate(0.2deg) scale(1.01);
+  }
+  40% {
+    transform: translateX(1px) translateY(-1px) rotate(-0.3deg) scale(1.03);
+  }
+  50% {
+    transform: translateX(0px) translateY(1px) rotate(0.4deg) scale(0.99);
+  }
+  60% {
+    transform: translateX(-1px) translateY(1px) rotate(-0.2deg) scale(1.02);
+  }
+  70% {
+    transform: translateX(1px) translateY(-1px) rotate(0.3deg) scale(1.01);
+  }
+  80% {
+    transform: translateX(0px) translateY(0px) rotate(-0.1deg) scale(1);
+  }
+  90% {
+    transform: translateX(-0.5px) translateY(0.5px) rotate(0.1deg) scale(1.005);
+  }
+}
+.jitter-effect {
+  animation: jitter 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+/* Slow momentum scrolling */
+.scrollbar-hide {
+  scroll-snap-type: x mandatory;
+}
+
+button {
+  cursor: pointer;
+}
