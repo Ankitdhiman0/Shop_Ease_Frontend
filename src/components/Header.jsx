@@ -189,10 +189,10 @@ function Header() {
           </button>
           <button
             onClick={() => navigate("/market-mate/user/addresses")}
-            className="flex gap-1 p-3 text-sm  hover:bg-white/10 rounded-xl text-white"
+            className="flex gap-1 p-3   hover:bg-white/10 rounded-xl text-white"
           >
             <MapPin />
-            Manage Addresses
+            Addresses
           </button>
           <button
             onClick={handleRedirect}

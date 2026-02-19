@@ -1,6 +1,6 @@
 import axios from "../utils/AxiosInstance";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Heart, ShoppingBag } from "lucide-react";
@@ -10,6 +10,7 @@ import SimilarProducts from "../components/productDetails.jsx/SimilarProducts";
 import { useScrollTrigger } from "../utils/useScrollTrigger";
 
 function ProductDetails() {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -49,8 +50,9 @@ function ProductDetails() {
       );
 
       const isWishlisted = res.data.wishlisted;
-
       setWishlisted(isWishlisted);
+
+      navigate("/market-mate/user/wishlist");
     } catch (error) {
       console.error(error);
     }
