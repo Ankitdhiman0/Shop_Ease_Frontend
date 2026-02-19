@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../../utils/AxiosInstance";
 import { Link, useParams } from "react-router-dom";
 
 function AdminOrders() {
@@ -18,10 +18,7 @@ function AdminOrders() {
   const fetchUserOrders = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(
-        `http://localhost:5000/market-mate/user/admin/orders/${id}`,
-        { withCredentials: true }
-      );
+      const res = await axios.get(`/market-mate/user/admin/orders/${id}`);
       setOrders(res.data.orders || []);
     } catch (error) {
       setError("Failed to fetch user orders");
@@ -140,10 +137,10 @@ function AdminOrders() {
                             order.orderStatus === "delivered"
                               ? "bg-green-500/20 text-green-400 border border-green-500/30"
                               : order.orderStatus === "shipped"
-                              ? "bg-blue-500/20 text-blue-400 border border-blue-500/30"
-                              : order.orderStatus === "pending"
-                              ? "bg-yellow-500/20 text-yellow-400 border border-yellow-500/30"
-                              : "bg-gray-500/20 text-gray-400 border border-gray-500/30"
+                                ? "bg-blue-500/20 text-blue-400 border border-blue-500/30"
+                                : order.orderStatus === "pending"
+                                  ? "bg-yellow-500/20 text-yellow-400 border border-yellow-500/30"
+                                  : "bg-gray-500/20 text-gray-400 border border-gray-500/30"
                           }`}
                         >
                           {order.orderStatus?.toUpperCase() || "N/A"}

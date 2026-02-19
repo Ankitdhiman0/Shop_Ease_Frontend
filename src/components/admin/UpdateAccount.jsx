@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../../utils/AxiosInstance";
 import { Link, useNavigate } from "react-router-dom";
 
 function UpdateAccount() {
@@ -25,12 +25,7 @@ function UpdateAccount() {
   const fetchUserProfile = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(
-        "http://localhost:5000/market-mate/user/account",
-        {
-          withCredentials: true,
-        }
-      );
+      const res = await axios.get(`/market-mate/user/account`);
       setFormData({
         name: res.data.user.name || "",
         email: res.data.user.email || "",
@@ -81,9 +76,8 @@ function UpdateAccount() {
 
       // eslint-disable-next-line no-unused-vars
       const res = await axios.put(
-        "http://localhost:5000/market-mate/user/account/update",
+        `/market-mate/user/account/update`,
         updateData,
-        { withCredentials: true }
       );
 
       setSuccess("Profile updated successfully!");

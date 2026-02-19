@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../utils/AxiosInstance";
 import React, { useState, useEffect } from "react";
 import {
   ShoppingBag,
@@ -36,14 +36,12 @@ function OrderSummary() {
     const fetchUser = async () => {
       try {
         setLoading(true);
-        const res = await axios.get(
-          "http://localhost:5000/market-mate/user/account",
-          { withCredentials: true }
-        );
+        const res = await axios.get(`/market-mate/user/account`);
         if (res.data?.user) {
           setUser(res.data.user);
         }
-      } catch {
+      } catch (error) {
+        console.error("User fetch error:", error.response?.data || error);
         setUser(null);
       } finally {
         setLoading(false);
@@ -52,12 +50,10 @@ function OrderSummary() {
 
     const fetchCart = async () => {
       try {
-        const res = await axios.get(
-          "http://localhost:5000/market-mate/user/cart/products",
-          { withCredentials: true }
-        );
+        const res = await axios.get(`/market-mate/user/cart/products`);
         setCart(res.data.products || []);
-      } catch {
+      } catch (error) {
+        console.error("Cart fetch error:", error.response?.data || error);
         setCart([]);
       } finally {
         setCartLoading(false);
@@ -89,14 +85,10 @@ function OrderSummary() {
     try {
       setOrderPlaced(true);
 
-      const response = await axios.post(
-        "http://localhost:5000/market-mate/user/order/create",
-        {
-          paymentMethod,
-          totalAmount: calculatedFinalTotal,
-        },
-        { withCredentials: true }
-      );
+      const response = await axios.post(`/market-mate/user/order/create`, {
+        paymentMethod,
+        totalAmount: calculatedFinalTotal,
+      });
 
       // Show success popup
       setOrderNumber(response.data.orderNumber);

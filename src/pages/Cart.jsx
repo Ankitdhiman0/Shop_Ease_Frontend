@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../utils/AxiosInstance";
 import { ShoppingBag, Trash2, Star } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -16,10 +16,7 @@ function Cart() {
     const fetchProducts = async () => {
       try {
         setLoading(true);
-        const res = await axios.get(
-          "http://localhost:5000/market-mate/user/cart/products",
-          { withCredentials: true }
-        );
+        const res = await axios.get(`/market-mate/user/cart/products`);
 
         if (res.data?.products) {
           setProducts(res.data.products);
@@ -38,10 +35,7 @@ function Cart() {
   const removeItem = async (id) => {
     try {
       setRemoving((prev) => ({ ...prev, [id]: true }));
-      await axios.delete(
-        `http://localhost:5000/market-mate/user/cart/products/${id}/remove`,
-        { withCredentials: true }
-      );
+      await axios.delete(`/market-mate/user/cart/products/${id}/remove`);
       setProducts((prev) => prev.filter((p) => p._id !== id));
     } catch (error) {
       console.log(error);
@@ -120,7 +114,7 @@ function Cart() {
                         ₹
                         {calculateDiscountedPrice(
                           product.price,
-                          product.discount
+                          product.discount,
                         ).toLocaleString()}
                       </span>
                       {product.discount && (

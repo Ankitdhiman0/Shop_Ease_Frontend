@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../../utils/AxiosInstance";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
@@ -11,8 +11,7 @@ function DiscountedItems() {
     const fetchProducts = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:5000/market-mate/product/filter?discounted=true",
-          { withCredentials: true }
+          `/market-mate/product/filter?discounted=true`,
         );
 
         if (res.data.success) {
@@ -175,7 +174,7 @@ function DiscountedItems() {
                             currency: "INR",
                             maximumFractionDigits: 0,
                           }).format(
-                            item.price - (item.price * item.discount) / 100
+                            item.price - (item.price * item.discount) / 100,
                           )}
                         </span>
                         <span className="text-xs line-through opacity-70">

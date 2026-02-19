@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
-import axios from "axios";
+import axios from "../../utils/AxiosInstance";
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowBigLeft } from "lucide-react";
 
@@ -35,11 +35,10 @@ function ProductsPage() {
       };
 
       const res = await axios.get(
-        `http://localhost:5000/market-mate/user/admin/products`, // Fixed API path
+        `/market-mate/user/admin/products`, // Fixed API path
         {
           params,
-          withCredentials: true,
-        }
+        },
       );
 
       const newProducts = res.data.products || [];
@@ -76,7 +75,7 @@ function ProductsPage() {
       if (node) observer.current.observe(node);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [hasMore, isLoadingMore, page]
+    [hasMore, isLoadingMore, page],
   );
 
   const handleRefresh = () => {

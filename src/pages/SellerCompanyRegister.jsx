@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Header from "../components/Header";
-import axios from "axios";
+import axios from "../utils/AxiosInstance";
 import { useNavigate } from "react-router";
 
 function SellerCompanyRegister() {
@@ -33,9 +33,8 @@ function SellerCompanyRegister() {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/market-mate/user/seller/company/register",
+        `/market-mate/user/seller/company/register`,
         formData,
-        { withCredentials: true }
       );
 
       if (res.data?.success) {

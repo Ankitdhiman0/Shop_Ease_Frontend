@@ -12,7 +12,7 @@ import {
   LogOut,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "../utils/AxiosInstance";
 
 function Header() {
   const navigate = useNavigate();
@@ -29,9 +29,7 @@ function Header() {
 
   const handleLogout = async () => {
     try {
-      await axios.get("http://localhost:5000/market-mate/user/logout", {
-        withCredentials: true,
-      });
+      await axios.get(`/market-mate/user/logout`);
     } catch (err) {
       console.error(err);
     }

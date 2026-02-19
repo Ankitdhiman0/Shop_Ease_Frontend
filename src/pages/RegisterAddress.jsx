@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import axios from "../utils/AxiosInstance";
 import { ArrowLeft, MapPin, Phone, Home, Check } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -35,7 +35,7 @@ function RegisterAddress() {
 
     try {
       const res = await fetch(
-        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`
+        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`,
       );
       const data = await res.json();
       fillAddressFromGeo(data.address);
@@ -105,14 +105,10 @@ function RegisterAddress() {
 
     try {
       setLoading(true);
-      await axios.post(
-        "http://localhost:5000/market-mate/user/address",
-        {
-          ...form,
-          phone: form.phone.replace(/\s+/g, ""),
-        },
-        { withCredentials: true }
-      );
+      await axios.post(`/market-mate/user/address`, {
+        ...form,
+        phone: form.phone.replace(/\s+/g, ""),
+      });
       navigate("/market-mate/user/addresses");
     } catch (error) {
       console.error(error);

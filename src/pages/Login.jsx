@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../utils/AxiosInstance";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -28,11 +28,7 @@ function Login() {
     setLoading(true);
 
     try {
-      const res = await axios.post(
-        "http://localhost:5000/market-mate/user/login",
-        form,
-        { withCredentials: true }
-      );
+      const res = await axios.post(`/market-mate/user/login`, form);
 
       if (!res.data?.success) {
         setError(res.data?.message || "Login failed");
@@ -54,7 +50,7 @@ function Login() {
       }
     } catch (err) {
       setError(
-        err.response?.data?.message || "Something went wrong. Try again."
+        err.response?.data?.message || "Something went wrong. Try again.",
       );
     } finally {
       setLoading(false);

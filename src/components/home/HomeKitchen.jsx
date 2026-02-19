@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../../utils/AxiosInstance";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
@@ -11,8 +11,7 @@ function HomeKitchen() {
     const fetchProducts = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/market-mate/product/filter?category=${category}`,
-          { withCredentials: true }
+          `/market-mate/product/filter?category=${category}`,
         );
 
         if (res.data?.success) {
@@ -33,8 +32,8 @@ function HomeKitchen() {
     const base64String = btoa(
       new Uint8Array(image.data).reduce(
         (data, byte) => data + String.fromCharCode(byte),
-        ""
-      )
+        "",
+      ),
     );
 
     return `data:${image.contentType};base64,${base64String}`;

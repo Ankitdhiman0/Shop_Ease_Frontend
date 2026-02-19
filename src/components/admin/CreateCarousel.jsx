@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import axios from "../../utils/AxiosInstance";
 import { Link } from "react-router";
 
 function CreateCarousel() {
@@ -63,11 +63,7 @@ function CreateCarousel() {
 
       formData.append("productLinks", JSON.stringify(productLinks));
 
-      await axios.post(
-        "http://localhost:5000/market-mate/user/carousel/create",
-        formData,
-        { withCredentials: true }
-      );
+      await axios.post(`/market-mate/user/carousel/create`, formData);
 
       setSuccess("Carousel created successfully");
       setItems([{ image: null, link: "" }]);

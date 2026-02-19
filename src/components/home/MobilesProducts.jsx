@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../../utils/AxiosInstance";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
@@ -10,8 +10,7 @@ function MobilesProducts() {
     const fetchProducts = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:5000/market-mate/product/filter?subCategory=mobiles",
-          { withCredentials: true }
+          `/market-mate/product/filter?subCategory=mobiles`,
         );
 
         if (res.data?.success) {

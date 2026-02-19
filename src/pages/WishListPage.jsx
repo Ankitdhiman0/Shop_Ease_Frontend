@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../utils/AxiosInstance";
 import React, { useEffect, useState } from "react";
 import { Heart, ShoppingBag } from "lucide-react";
 import Header from "../components/Header";
@@ -14,10 +14,7 @@ function WishListPage() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await axios.get(
-          "http://localhost:5000/market-mate/user/wishlist/products",
-          { withCredentials: true }
-        );
+        const res = await axios.get(`/market-mate/user/wishlist/products`);
 
         setWishlist(res.data.products || []);
       } catch (error) {
@@ -36,10 +33,7 @@ function WishListPage() {
   const removeFromWishlist = async (id) => {
     try {
       setRemoving((prev) => ({ ...prev, [id]: true }));
-      await axios.delete(
-        `http://localhost:5000/market-mate/user/wishlist/products/${id}/remove`,
-        { withCredentials: true }
-      );
+      await axios.delete(`/market-mate/user/wishlist/products/${id}/remove`);
       setWishlist((prev) => prev.filter((product) => product._id !== id));
     } catch (error) {
       console.error(error);
@@ -50,11 +44,9 @@ function WishListPage() {
 
   const addToCart = async (productId) => {
     try {
-      await axios.post(
-        `http://localhost:5000/market-mate/user/cart/${productId}/add`,
-        { quantity: 1 },
-        { withCredentials: true }
-      );
+      await axios.post(`/market-mate/user/cart/${productId}/add`, {
+        quantity: 1,
+      });
     } catch (error) {
       console.error(error);
     }

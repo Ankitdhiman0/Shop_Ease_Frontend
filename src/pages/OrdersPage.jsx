@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../utils/AxiosInstance";
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -12,10 +12,7 @@ function OrdersPage() {
     const fetchOrders = async () => {
       try {
         setLoading(true);
-        const res = await axios.get(
-          "http://localhost:5000/market-mate/user/orders",
-          { withCredentials: true }
-        );
+        const res = await axios.get(`/market-mate/user/orders`);
         setOrders(res.data.orders || []);
       } catch (error) {
         console.error("Failed to fetch orders:", error);
@@ -28,16 +25,13 @@ function OrdersPage() {
 
   const cancelOrder = async (orderId) => {
     try {
-      await axios.delete(
-        `http://localhost:5000/market-mate/user/orders/${orderId}/cancel`,
-        { withCredentials: true }
-      );
+      await axios.delete(`/market-mate/user/orders/${orderId}/cancel`);
       setOrders(
         orders.map((order) =>
           order._id === orderId
             ? { ...order, orderStatus: "cancelled", cancelledAt: new Date() }
-            : order
-        )
+            : order,
+        ),
       );
     } catch (error) {
       alert(error.response?.data?.message || "Failed to cancel order");
@@ -46,17 +40,13 @@ function OrdersPage() {
 
   const markAsDelivered = async (orderId) => {
     try {
-      await axios.put(
-        `http://localhost:5000/market-mate/user/order/${orderId}/delivered`,
-        {},
-        { withCredentials: true }
-      );
+      await axios.put(`/market-mate/user/order/${orderId}/delivered`, {});
       setOrders(
         orders.map((order) =>
           order._id === orderId
             ? { ...order, orderStatus: "delivered", deliveredAt: new Date() }
-            : order
-        )
+            : order,
+        ),
       );
     } catch (error) {
       alert(error.response?.data?.message || "Failed to mark as delivered");
@@ -174,7 +164,7 @@ const CompactOrderCard = ({ order, onCancelOrder, onMarkDelivered }) => {
   ];
 
   const currentStatusIndex = statusSteps.findIndex(
-    (step) => step.id === orderStatus
+    (step) => step.id === orderStatus,
   );
   const canCancel =
     ["placed", "confirmed"].includes(orderStatus) && paymentStatus !== "failed";
@@ -205,8 +195,8 @@ const CompactOrderCard = ({ order, onCancelOrder, onMarkDelivered }) => {
             {orderStatus === "delivered"
               ? "✅ Delivered"
               : orderStatus === "cancelled"
-              ? "❌ Cancelled"
-              : statusSteps.find((s) => s.id === orderStatus)?.label}
+                ? "❌ Cancelled"
+                : statusSteps.find((s) => s.id === orderStatus)?.label}
           </span>
         </div>
         <div className="flex mt-2 gap-2">
@@ -251,8 +241,8 @@ const CompactOrderCard = ({ order, onCancelOrder, onMarkDelivered }) => {
                   index < currentStatusIndex
                     ? "bg-white/20 text-white shadow-white/20"
                     : index === currentStatusIndex
-                    ? "bg-white/30 text-white shadow-white shadow-lg animate-pulse"
-                    : "bg-black/50 text-gray-500 border-white/30"
+                      ? "bg-white/30 text-white shadow-white shadow-lg animate-pulse"
+                      : "bg-black/50 text-gray-500 border-white/30"
                 }`}
               >
                 {index < currentStatusIndex ? "✓" : step.icon}
@@ -277,8 +267,8 @@ const CompactOrderCard = ({ order, onCancelOrder, onMarkDelivered }) => {
                     index < currentStatusIndex
                       ? "bg-white/40"
                       : index === currentStatusIndex
-                      ? "bg-blue-500/50 animate-pulse"
-                      : "bg-gray-800"
+                        ? "bg-blue-500/50 animate-pulse"
+                        : "bg-gray-800"
                   }`}
                 ></div>
               )}
@@ -337,7 +327,7 @@ const CompactOrderCard = ({ order, onCancelOrder, onMarkDelivered }) => {
                   )}
                 </div>
               );
-            }
+            },
           )}
         </div>
       </div>
@@ -377,8 +367,8 @@ const CompactOrderCard = ({ order, onCancelOrder, onMarkDelivered }) => {
             orderStatus === "delivered"
               ? "bg-green-500/20 text-green-300 border-green-400"
               : orderStatus === "cancelled"
-              ? "bg-red-500/20 text-red-300 border-red-400"
-              : "bg-white/10 text-gray-400 border-white/20"
+                ? "bg-red-500/20 text-red-300 border-red-400"
+                : "bg-white/10 text-gray-400 border-white/20"
           }`}
         >
           {orderStatus.charAt(0).toUpperCase() + orderStatus.slice(1)}

@@ -1,5 +1,5 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
+import axios from "../utils/AxiosInstance";
 import { useParams, useNavigate } from "react-router";
 import Header from "../components/Header";
 
@@ -26,10 +26,7 @@ function UpdateProduct() {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await axios.get(
-          `http://localhost:5000/market-mate/product/find/${id}`,
-          { withCredentials: true }
-        );
+        const res = await axios.get(`/market-mate/product/find/${id}`);
 
         if (res.data?.success) {
           const p = res.data.product;
@@ -126,9 +123,8 @@ function UpdateProduct() {
 
     try {
       const res = await axios.post(
-        `http://localhost:5000/market-mate/product/update/${id}`,
+        `/market-mate/product/update/${id}`,
         formData,
-        { withCredentials: true }
       );
 
       if (res.data?.success) {

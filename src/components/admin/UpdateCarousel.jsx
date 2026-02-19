@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../../utils/AxiosInstance";
 
 function UpdateCarousel() {
   const [items, setItems] = useState([]);
@@ -12,10 +12,7 @@ function UpdateCarousel() {
   useEffect(() => {
     const fetchCarousel = async () => {
       try {
-        const res = await axios.get(
-          "http://localhost:5000/market-mate/user/new/carousel",
-          { withCredentials: true }
-        );
+        const res = await axios.get(`/market-mate/user/new/carousel`);
 
         if (res.data?.data) {
           setCarouselId(res.data.data._id);
@@ -25,7 +22,7 @@ function UpdateCarousel() {
               image: null,
               existingImageName: `carousel-image-${index + 1}`,
               link: item.productLink,
-            }))
+            })),
           );
         }
       } catch {
@@ -53,17 +50,16 @@ function UpdateCarousel() {
     if (!carouselId) return;
 
     const confirmDelete = window.confirm(
-      "This will delete the entire carousel. Continue?"
+      "This will delete the entire carousel. Continue?",
     );
 
     if (!confirmDelete) return;
 
     try {
       setLoading(true);
-      await axios.delete(
-        `http://localhost:5000/market-mate/user/carousel/delete/${carouselId}`,
-        { withCredentials: true }
-      );
+      await axios.delete(`/market-mate/user/carousel/delete/${carouselId}`, {
+        withCredentials: true,
+      });
 
       setItems([]);
       setSuccess("Carousel deleted successfully");
@@ -93,11 +89,9 @@ function UpdateCarousel() {
 
       formData.append("productLinks", JSON.stringify(productLinks));
 
-      await axios.put(
-        "http://localhost:5000/market-mate/user/carousel/update",
-        formData,
-        { withCredentials: true }
-      );
+      await axios.put("/market-mate/user/carousel/update", formData, {
+        withCredentials: true,
+      });
 
       setSuccess("Carousel updated successfully");
     } catch {

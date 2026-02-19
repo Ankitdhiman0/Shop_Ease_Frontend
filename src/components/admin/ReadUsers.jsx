@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../../utils/AxiosInstance";
 import { Link } from "react-router-dom";
 
 function ReadUsers() {
@@ -18,7 +18,7 @@ function ReadUsers() {
     const filtered = users.filter(
       (user) =>
         user.name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        user.email?.toLowerCase().includes(searchQuery.toLowerCase())
+        user.email?.toLowerCase().includes(searchQuery.toLowerCase()),
     );
     setFilteredUsers(filtered);
   }, [searchQuery, users]);
@@ -26,12 +26,7 @@ function ReadUsers() {
   const fetchUsers = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(
-        "http://localhost:5000/market-mate/user/admin/users",
-        {
-          withCredentials: true,
-        }
-      );
+      const res = await axios.get(`/market-mate/user/admin/users`);
       setUsers(res.data.users);
       setFilteredUsers(res.data.users);
     } catch (error) {

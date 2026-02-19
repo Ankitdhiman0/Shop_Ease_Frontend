@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useNavigate, useSearchParams } from "react-router";
-import axios from "axios";
+import axios from "../utils/AxiosInstance";
 import { useScrollTrigger } from "../utils/useScrollTrigger";
 
 function SearchResult() {
@@ -31,8 +31,7 @@ function SearchResult() {
       try {
         setLoading(true);
         const res = await axios.get(
-          `http://localhost:5000/market-mate/product/search?query=${query}`,
-          { withCredentials: true }
+          `/market-mate/product/search?query=${query}`,
         );
 
         setProducts(res.data || []);
@@ -288,7 +287,7 @@ function SearchResult() {
                     <span className="text-lg md:text-xl font-black text-green-400">
                       ₹
                       {Math.round(
-                        product.price - product.price * (discountPercent / 100)
+                        product.price - product.price * (discountPercent / 100),
                       ).toLocaleString()}
                     </span>
                     {discountPercent > 0 && (

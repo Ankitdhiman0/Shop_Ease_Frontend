@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../../utils/AxiosInstance";
 import React, { useEffect, useState } from "react";
 import { FiStar } from "react-icons/fi";
 
@@ -11,10 +11,7 @@ function ProductReviews({ productId }) {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const res = await axios.get(
-          `http://localhost:5000/market-mate/product/find/${productId}`,
-          { withCredentials: true }
-        );
+        const res = await axios.get(`/market-mate/product/find/${productId}`);
         setReviews(res.data.product.reviews || []);
       } catch (error) {
         console.error(error);
@@ -27,11 +24,10 @@ function ProductReviews({ productId }) {
     if (!rating || !comment.trim()) return;
     try {
       setLoading(true);
-      const res = await axios.post(
-        `http://localhost:5000/market-mate/product/${productId}/review`,
-        { rating, comment },
-        { withCredentials: true }
-      );
+      const res = await axios.post(`/market-mate/product/${productId}/review`, {
+        rating,
+        comment,
+      });
       setReviews(res.data.reviews);
       setRating(0);
       setComment("");

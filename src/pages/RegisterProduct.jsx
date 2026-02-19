@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../utils/AxiosInstance";
 import React, { useState } from "react";
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
@@ -244,11 +244,7 @@ function RegisterProduct() {
     formData.append("offers", JSON.stringify(form.offers));
 
     try {
-      const res = await axios.post(
-        "http://localhost:5000/market-mate/product/register",
-        formData,
-        { withCredentials: true }
-      );
+      const res = await axios.post(`/market-mate/product/register`, formData);
 
       if (res.data?.success) {
         navigate(`/market-mate/seller/dashboard/`);

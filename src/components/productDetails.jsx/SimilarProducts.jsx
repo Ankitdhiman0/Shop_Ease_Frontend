@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../../utils/AxiosInstance";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -16,15 +16,12 @@ function SimilarProducts({ productId, category, subCategory }) {
     const fetchProducts = async () => {
       setLoading(true);
       try {
-        const res = await axios.get(
-          "http://localhost:5000/market-mate/product/filter",
-          {
-            params: {
-              category: category.toLowerCase(),
-              subCategory: subCategory.toLowerCase(),
-            },
-          }
-        );
+        const res = await axios.get(`/market-mate/product/filter`, {
+          params: {
+            category: category.toLowerCase(),
+            subCategory: subCategory.toLowerCase(),
+          },
+        });
 
         const filtered = res.data.products
           .filter((p) => p._id !== productId)
@@ -90,7 +87,7 @@ function SimilarProducts({ productId, category, subCategory }) {
           const discountedPrice =
             product.discount > 0
               ? Math.round(
-                  product.price - (product.price * product.discount) / 100
+                  product.price - (product.price * product.discount) / 100,
                 )
               : product.price;
 

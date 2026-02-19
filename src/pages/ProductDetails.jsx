@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../utils/AxiosInstance";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Header from "../components/Header";
@@ -28,10 +28,7 @@ function ProductDetails() {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await axios.get(
-          `http://localhost:5000/market-mate/product/find/${id}`,
-          { withCredentials: true }
-        );
+        const res = await axios.get(`/market-mate/product/find/${id}`);
         setProduct(res.data.product);
       } catch (err) {
         console.error(err);
@@ -47,9 +44,8 @@ function ProductDetails() {
   const toggleWishlist = async () => {
     try {
       const res = await axios.post(
-        `http://localhost:5000/market-mate/user/wishlist/${product._id}`,
+        `/market-mate/user/wishlist/${product._id}`,
         {},
-        { withCredentials: true }
       );
 
       const isWishlisted = res.data.wishlisted;
@@ -65,9 +61,8 @@ function ProductDetails() {
       setCartLoading(true);
       // eslint-disable-next-line no-unused-vars
       const res = await axios.post(
-        `http://localhost:5000/market-mate/user/cart/${product._id}/add`,
+        `/market-mate/user/cart/${product._id}/add`,
         { quantity: 1 },
-        { withCredentials: true }
       );
     } catch (error) {
       console.error("Add to cart error:", error.response?.data?.message);

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../../utils/AxiosInstance";
 import React, { useEffect, useState } from "react";
 
 function Carousel() {
@@ -8,10 +8,7 @@ function Carousel() {
   useEffect(() => {
     const fetchCarousel = async () => {
       try {
-        const res = await axios.get(
-          "http://localhost:5000/market-mate/user/carousel",
-          { withCredentials: true }
-        );
+        const res = await axios.get(`/market-mate/user/carousel`);
 
         if (res.data.success) {
           setItems(res.data.data);

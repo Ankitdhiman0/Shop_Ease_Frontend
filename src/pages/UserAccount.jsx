@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../utils/AxiosInstance";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -25,12 +25,7 @@ function UserAccount() {
   const fetchUserProfile = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(
-        "http://localhost:5000/market-mate/user/account",
-        {
-          withCredentials: true,
-        }
-      );
+      const res = await axios.get(`/market-mate/user/account`);
       setUser(res.data.user);
       setFormData({
         name: res.data.user.name || "",
@@ -98,11 +93,8 @@ function UserAccount() {
       }
 
       const res = await axios.put(
-        "http://localhost:5000/market-mate/user/account/update",
+        `/market-mate/user/account/update`,
         updateData,
-        {
-          withCredentials: true,
-        }
       );
 
       setUser(res.data.user);

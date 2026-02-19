@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../../utils/AxiosInstance";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
@@ -10,10 +10,7 @@ function CompanyDetails() {
   useEffect(() => {
     const getCompanyDetails = async () => {
       try {
-        const res = await axios.get(
-          "http://localhost:5000/market-mate/user/company/details",
-          { withCredentials: true }
-        );
+        const res = await axios.get(`/market-mate/user/company/details`);
         setCompany(res.data.company);
       } catch (err) {
         console.error(err);

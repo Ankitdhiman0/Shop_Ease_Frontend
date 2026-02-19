@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../../utils/AxiosInstance";
 import React, { useEffect, useState, useCallback, useRef } from "react";
 import { Search, Edit2, Trash2 } from "lucide-react";
 import { useNavigate } from "react-router";
@@ -18,10 +18,7 @@ function SellerProducts() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await axios.get(
-          "http://localhost:5000/market-mate/user/seller/products",
-          { withCredentials: true }
-        );
+        const res = await axios.get(`/market-mate/user/seller/products`);
 
         if (res.data?.success) {
           setProducts(res.data.products);
@@ -44,8 +41,8 @@ function SellerProducts() {
     } else {
       const filtered = products.filter((product) =>
         Object.values(product).some((value) =>
-          value?.toString().toLowerCase().includes(searchQuery.toLowerCase())
-        )
+          value?.toString().toLowerCase().includes(searchQuery.toLowerCase()),
+        ),
       );
       setFilteredProducts(filtered.slice(0, displayedCount));
     }
@@ -70,17 +67,16 @@ function SellerProducts() {
 
       if (node) observer.current.observe(node);
     },
-    [loading, filteredProducts.length, products.length, displayedCount]
+    [loading, filteredProducts.length, products.length, displayedCount],
   );
 
   const handleDelete = async (productId) => {
     if (!confirm("Are you sure you want to delete this product?")) return;
 
     try {
-      await axios.delete(
-        `http://localhost:5000/market-mate/product/delete/${productId}`,
-        { withCredentials: true }
-      );
+      await axios.delete(`/market-mate/product/delete/${productId}`, {
+        withCredentials: true,
+      });
       setProducts(products.filter((p) => p._id !== productId));
       setFilteredProducts(filteredProducts.filter((p) => p._id !== productId));
     } catch (err) {

@@ -3,7 +3,7 @@ import CreateCarousel from "../components/admin/CreateCarousel";
 import UpdateCarousel from "../components/admin/UpdateCarousel";
 import ReadUsers from "../components/admin/ReadUsers";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "../utils/AxiosInstance";
 import Footer from "../components/Footer";
 
 function AdminDashboard() {
@@ -11,9 +11,7 @@ function AdminDashboard() {
 
   const handleLogout = async () => {
     try {
-      await axios.get("http://localhost:5000/market-mate/user/logout", {
-        withCredentials: true,
-      });
+      await axios.get(`/market-mate/user/logout`);
       navigate("/market-mate/login");
     } catch (error) {
       console.error("Logout error:", error);

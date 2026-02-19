@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../utils/AxiosInstance";
 import React, { useEffect, useState } from "react";
 import { Edit3, Trash2, Plus, MapPin, Home, Crown } from "lucide-react";
 import Header from "../components/Header";
@@ -16,10 +16,7 @@ function AddressesPage() {
     const getAllAddresses = async () => {
       try {
         setLoading(true);
-        const res = await axios.get(
-          "http://localhost:5000/market-mate/user/get/addresses",
-          { withCredentials: true }
-        );
+        const res = await axios.get(`/market-mate/user/get/addresses`);
         setAddresses(res.data.addresses || res.data || []);
       } catch (error) {
         console.error(error);
@@ -37,10 +34,9 @@ function AddressesPage() {
 
     try {
       setDeleting((prev) => ({ ...prev, [id]: true }));
-      await axios.delete(
-        `http://localhost:5000/market-mate/user/address/${id}/remove`,
-        { withCredentials: true }
-      );
+      await axios.delete(`/market-mate/user/address/${id}/remove`, {
+        withCredentials: true,
+      });
       setAddresses((prev) => prev.filter((addr) => addr._id !== id));
     } catch (error) {
       console.error(error);
@@ -60,9 +56,9 @@ function AddressesPage() {
     try {
       setSettingDefault((prev) => ({ ...prev, [id]: true }));
       await axios.post(
-        `http://localhost:5000/market-mate/user/address/${id}/setdefault`,
+        `/market-mate/user/address/${id}/setdefault`,
         {},
-        { withCredentials: true }
+        { withCredentials: true },
       );
 
       // Update local state
@@ -70,8 +66,8 @@ function AddressesPage() {
         prev.map((addr) =>
           addr._id === id
             ? { ...addr, isDefault: true }
-            : { ...addr, isDefault: false }
-        )
+            : { ...addr, isDefault: false },
+        ),
       );
     } catch (error) {
       console.error(error);

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "../../utils/AxiosInstance";
 import { Link, useNavigate } from "react-router-dom";
 
 function Account() {
@@ -15,12 +15,7 @@ function Account() {
   const fetchUserProfile = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(
-        "http://localhost:5000/market-mate/user/account",
-        {
-          withCredentials: true,
-        }
-      );
+      const res = await axios.get(`/market-mate/user/account`);
       setUser(res.data.user);
     } catch (error) {
       setError("Failed to fetch profile");
