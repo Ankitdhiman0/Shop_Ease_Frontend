@@ -1,6 +1,6 @@
-📱 Device Compare – Frontend
+📱 Shop-Ease
 
-Device Compare is a full-stack web application that allows users to compare mobiles and laptops side-by-side based on specifications and features. This repository contains the frontend of the application, built using modern React tooling with a focus on performance, scalability, and clean UI design.
+Shop-Ease is a full-stack web application that allows users to shop online created with React(Vite).
 
 🚀 Tech Stack
 
@@ -38,9 +38,7 @@ ESLint
 
 Responsive UI built with Tailwind CSS
 
-Role-based interface (Admin & User)
-
-Device comparison (Mobiles & Laptops)
+Role-based interface (Admin & User, Seller)
 
 Dynamic routing using React Router
 
@@ -57,7 +55,6 @@ Clone the repository:
 git clone <your-frontend-repo-url>
 cd frontend
 
-
 Install dependencies:
 
 npm install
@@ -66,39 +63,34 @@ npm install
 Start Development Server
 npm run dev
 
-
 Runs the app in development mode using Vite.
 
 Build for Production
 npm run build
-
 
 Generates an optimized production build.
 
 Preview Production Build
 npm run preview
 
-
 Locally preview the production build.
 
 Lint the Codebase
 npm run lint
-
 
 Runs ESLint for code quality checks.
 
 📂 Project Structure (Typical)
 frontend/
 │── src/
-│   ├── components/
-│   ├── pages/
-│   ├── utils/
-│   ├── data/
-│   └── app.jsx
+│ ├── components/
+│ ├── pages/
+│ ├── utils/
+│ ├── data/
+│ └── app.jsx
 │── public/
 │── index.html
 │── package.json
- 
 
 👨‍💻 Author
 
