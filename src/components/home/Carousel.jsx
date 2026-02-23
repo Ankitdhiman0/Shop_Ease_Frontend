@@ -8,7 +8,7 @@ function Carousel() {
   useEffect(() => {
     const fetchCarousel = async () => {
       try {
-        const res = await axios.get(`/market-mate/user/carousel`);
+        const res = await axios.get(`/user/carousel`);
 
         if (res.data.success) {
           setItems(res.data.data);

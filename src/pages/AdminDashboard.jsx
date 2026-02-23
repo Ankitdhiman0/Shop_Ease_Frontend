@@ -11,7 +11,7 @@ function AdminDashboard() {
 
   const handleLogout = async () => {
     try {
-      await axios.get(`/market-mate/user/logout`);
+      await axios.get(`/user/logout`);
       navigate("/market-mate/login");
     } catch (error) {
       console.error("Logout error:", error);

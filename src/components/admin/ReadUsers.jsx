@@ -26,7 +26,7 @@ function ReadUsers() {
   const fetchUsers = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`/market-mate/user/admin/users`);
+      const res = await axios.get(`/user/admin/users`);
       setUsers(res.data.users);
       setFilteredUsers(res.data.users);
     } catch (error) {
@@ -166,7 +166,7 @@ function ReadUsers() {
 
               {/* Action Button */}
               <Link
-                to={`/market-mate/admin/users/${user._id}/orders`}
+                to={`/shop-ease/admin/users/${user._id}/orders`}
                 className="inline-flex items-center justify-center gap-2 w-full px-6 py-3 bg-linear-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white rounded-2xl transition-all group-hover:shadow-xl shadow-purple-500/30 h-12"
               >
                 📦 View Orders

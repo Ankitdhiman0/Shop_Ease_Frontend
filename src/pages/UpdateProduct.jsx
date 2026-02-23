@@ -26,7 +26,7 @@ function UpdateProduct() {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await axios.get(`/market-mate/product/find/${id}`);
+        const res = await axios.get(`/product/find/${id}`);
 
         if (res.data?.success) {
           const p = res.data.product;
@@ -122,10 +122,7 @@ function UpdateProduct() {
     });
 
     try {
-      const res = await axios.post(
-        `/market-mate/product/update/${id}`,
-        formData,
-      );
+      const res = await axios.post(`/product/update/${id}`, formData);
 
       if (res.data?.success) {
         navigate("/market-mate/seller/dashboard");

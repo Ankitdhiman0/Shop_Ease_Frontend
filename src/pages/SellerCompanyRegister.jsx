@@ -32,10 +32,7 @@ function SellerCompanyRegister() {
     if (form.logo) formData.append("logo", form.logo);
 
     try {
-      const res = await axios.post(
-        `/market-mate/user/seller/company/register`,
-        formData,
-      );
+      const res = await axios.post(`/user/seller/company/register`, formData);
 
       if (res.data?.success) {
         const storedUser = JSON.parse(localStorage.getItem("user"));

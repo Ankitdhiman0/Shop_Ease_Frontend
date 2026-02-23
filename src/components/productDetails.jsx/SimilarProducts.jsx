@@ -16,7 +16,7 @@ function SimilarProducts({ productId, category, subCategory }) {
     const fetchProducts = async () => {
       setLoading(true);
       try {
-        const res = await axios.get(`/market-mate/product/filter`, {
+        const res = await axios.get(`/product/filter`, {
           params: {
             category: category.toLowerCase(),
             subCategory: subCategory.toLowerCase(),
@@ -95,7 +95,7 @@ function SimilarProducts({ productId, category, subCategory }) {
             <div
               key={product._id}
               onClick={() =>
-                navigate(`/market-mate/product/details/${product._id}`)
+                navigate(`/shop-ease/product/details/${product._id}`)
               }
               className="min-w-40 snap-center cursor-pointer rounded-lg border border-white/15 bg-transparent p-3 transition-all duration-300 hover:border-white/30 hover:scale-[1.02] flex flex-col h-52"
             >

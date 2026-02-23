@@ -28,7 +28,7 @@ function Login() {
     setLoading(true);
 
     try {
-      const res = await axios.post(`/market-mate/user/login`, form);
+      const res = await axios.post(`/user/login`, form);
 
       if (!res.data?.success) {
         setError(res.data?.message || "Login failed");

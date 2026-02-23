@@ -16,7 +16,7 @@ function Cart() {
     const fetchProducts = async () => {
       try {
         setLoading(true);
-        const res = await axios.get(`/market-mate/user/cart/products`);
+        const res = await axios.get(`/user/cart/products`);
 
         if (res.data?.products) {
           setProducts(res.data.products);
@@ -35,7 +35,7 @@ function Cart() {
   const removeItem = async (id) => {
     try {
       setRemoving((prev) => ({ ...prev, [id]: true }));
-      await axios.delete(`/market-mate/user/cart/products/${id}/remove`);
+      await axios.delete(`/user/cart/products/${id}/remove`);
       setProducts((prev) => prev.filter((p) => p._id !== id));
     } catch (error) {
       console.log(error);

@@ -36,7 +36,7 @@ function OrderSummary() {
     const fetchUser = async () => {
       try {
         setLoading(true);
-        const res = await axios.get(`/market-mate/user/account`);
+        const res = await axios.get(`/user/account`);
         if (res.data?.user) {
           setUser(res.data.user);
         }
@@ -50,7 +50,7 @@ function OrderSummary() {
 
     const fetchCart = async () => {
       try {
-        const res = await axios.get(`/market-mate/user/cart/products`);
+        const res = await axios.get(`/user/cart/products`);
         setCart(res.data.products || []);
       } catch (error) {
         console.error("Cart fetch error:", error.response?.data || error);
@@ -85,7 +85,7 @@ function OrderSummary() {
     try {
       setOrderPlaced(true);
 
-      const response = await axios.post(`/market-mate/user/order/create`, {
+      const response = await axios.post(`/user/order/create`, {
         paymentMethod,
         totalAmount: calculatedFinalTotal,
       });

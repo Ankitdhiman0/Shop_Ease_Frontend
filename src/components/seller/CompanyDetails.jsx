@@ -10,7 +10,7 @@ function CompanyDetails() {
   useEffect(() => {
     const getCompanyDetails = async () => {
       try {
-        const res = await axios.get(`/market-mate/user/company/details`);
+        const res = await axios.get(`/user/company/details`);
         setCompany(res.data.company);
       } catch (err) {
         console.error(err);

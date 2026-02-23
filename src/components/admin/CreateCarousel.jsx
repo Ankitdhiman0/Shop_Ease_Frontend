@@ -63,7 +63,7 @@ function CreateCarousel() {
 
       formData.append("productLinks", JSON.stringify(productLinks));
 
-      await axios.post(`/market-mate/user/carousel/create`, formData);
+      await axios.post(`/user/carousel/create`, formData);
 
       setSuccess("Carousel created successfully");
       setItems([{ image: null, link: "" }]);

@@ -28,8 +28,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* MARKET-MATE PARENT */}
-        <Route path="/market-mate">
+        {/* SHOP-EASE PARENT */}
+        <Route path="/shop-ease">
           {/* INDEX → LOGIN */}
           <Route index element={<Login />} />
           {/* OPTIONAL: explicit login path */}

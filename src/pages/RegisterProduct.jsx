@@ -244,10 +244,10 @@ function RegisterProduct() {
     formData.append("offers", JSON.stringify(form.offers));
 
     try {
-      const res = await axios.post(`/market-mate/product/register`, formData);
+      const res = await axios.post(`/product/register`, formData);
 
       if (res.data?.success) {
-        navigate(`/market-mate/seller/dashboard/`);
+        navigate(`/shop-ease/seller/dashboard/`);
       }
     } catch (error) {
       console.error(error);

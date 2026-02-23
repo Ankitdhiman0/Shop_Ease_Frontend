@@ -10,9 +10,7 @@ function DiscountedItems() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await axios.get(
-          `/market-mate/product/filter?discounted=true`,
-        );
+        const res = await axios.get(`/product/filter?discounted=true`);
 
         if (res.data.success) {
           const discounted = res.data.products.slice(0, 5).map((product) => ({
@@ -134,9 +132,7 @@ function DiscountedItems() {
         >
           {items.map((item, index) => (
             <div
-              onClick={() =>
-                navigate(`/market-mate/product/details/${item._id}`)
-              }
+              onClick={() => navigate(`/shop-ease/product/details/${item._id}`)}
               key={index}
               className="w-full shrink-0 relative"
             >

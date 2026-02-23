@@ -105,7 +105,7 @@ function RegisterAddress() {
 
     try {
       setLoading(true);
-      await axios.post(`/market-mate/user/address`, {
+      await axios.post(`/user/address`, {
         ...form,
         phone: form.phone.replace(/\s+/g, ""),
       });

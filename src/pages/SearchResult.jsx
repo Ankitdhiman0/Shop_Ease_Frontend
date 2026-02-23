@@ -30,9 +30,7 @@ function SearchResult() {
 
       try {
         setLoading(true);
-        const res = await axios.get(
-          `/market-mate/product/search?query=${query}`,
-        );
+        const res = await axios.get(`/product/search?query=${query}`);
 
         setProducts(res.data || []);
         // Detect category from first product
@@ -50,7 +48,7 @@ function SearchResult() {
   }, [query]);
 
   const handleNavigate = (id) => {
-    navigate(`/market-mate/product/details/${id}`);
+    navigate(`/shop-ease/product/details/${id}`);
   };
 
   // Filter and sort products

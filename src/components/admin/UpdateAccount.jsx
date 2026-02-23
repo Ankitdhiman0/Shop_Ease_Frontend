@@ -25,7 +25,7 @@ function UpdateAccount() {
   const fetchUserProfile = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`/market-mate/user/account`);
+      const res = await axios.get(`/user/account`);
       setFormData({
         name: res.data.user.name || "",
         email: res.data.user.email || "",
@@ -75,10 +75,7 @@ function UpdateAccount() {
       }
 
       // eslint-disable-next-line no-unused-vars
-      const res = await axios.put(
-        `/market-mate/user/account/update`,
-        updateData,
-      );
+      const res = await axios.put(`/user/account/update`, updateData);
 
       setSuccess("Profile updated successfully!");
 

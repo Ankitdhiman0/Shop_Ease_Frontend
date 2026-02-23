@@ -18,7 +18,7 @@ function SellerProducts() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await axios.get(`/market-mate/user/seller/products`);
+        const res = await axios.get(`/user/seller/products`);
 
         if (res.data?.success) {
           setProducts(res.data.products);
@@ -74,7 +74,7 @@ function SellerProducts() {
     if (!confirm("Are you sure you want to delete this product?")) return;
 
     try {
-      await axios.delete(`/market-mate/product/delete/${productId}`, {
+      await axios.delete(`/product/delete/${productId}`, {
         withCredentials: true,
       });
       setProducts(products.filter((p) => p._id !== productId));
@@ -86,7 +86,7 @@ function SellerProducts() {
   };
 
   const handleUpdate = (product) => {
-    navigate(`/market-mate/seller/product/update/${product._id}`, {
+    navigate(`/shop-ease/seller/product/update/${product._id}`, {
       state: { product },
     });
   };
@@ -145,7 +145,7 @@ function SellerProducts() {
               <div className="relative h-48 overflow-hidden p-4 shrink-0">
                 <img
                   onClick={() =>
-                    navigate(`/market-mate/product/details/${product._id}`)
+                    navigate(`/shop-ease/product/details/${product._id}`)
                   }
                   src={product.image}
                   alt={product.title}

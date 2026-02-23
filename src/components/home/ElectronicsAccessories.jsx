@@ -10,7 +10,7 @@ function ElectronicsAccessories() {
     const fetchProducts = async () => {
       try {
         const res = await axios.get(
-          `/market-mate/product/filter?category=electronics&subCategory=accessories`,
+          `/product/filter?category=electronics&subCategory=accessories`,
         );
         if (res.data?.success) {
           setProducts(res.data.products);
@@ -45,7 +45,7 @@ function ElectronicsAccessories() {
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
         {products.map((item) => (
           <div
-            onClick={() => navigate(`/market-mate/product/details/${item._id}`)}
+            onClick={() => navigate(`/shop-ease/product/details/${item._id}`)}
             key={item._id}
             className="group bg-black border cursor-pointer border-white/10 rounded-xl overflow-hidden hover:border-white/30 transition-all duration-300 hover:scale-[1.02]"
           >

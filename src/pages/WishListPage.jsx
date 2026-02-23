@@ -14,7 +14,7 @@ function WishListPage() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await axios.get(`/market-mate/user/wishlist/products`);
+        const res = await axios.get(`/user/wishlist/products`);
 
         setWishlist(res.data.products || []);
       } catch (error) {
@@ -27,13 +27,13 @@ function WishListPage() {
   }, []);
 
   const handleNavigate = (id) => {
-    navigate(`/market-mate/product/details/${id}`);
+    navigate(`/shop-ease/product/details/${id}`);
   };
 
   const removeFromWishlist = async (id) => {
     try {
       setRemoving((prev) => ({ ...prev, [id]: true }));
-      await axios.delete(`/market-mate/user/wishlist/products/${id}/remove`);
+      await axios.delete(`/user/wishlist/products/${id}/remove`);
       setWishlist((prev) => prev.filter((product) => product._id !== id));
     } catch (error) {
       console.error(error);
@@ -44,7 +44,7 @@ function WishListPage() {
 
   const addToCart = async (productId) => {
     try {
-      await axios.post(`/market-mate/user/cart/${productId}/add`, {
+      await axios.post(`/user/cart/${productId}/add`, {
         quantity: 1,
       });
     } catch (error) {

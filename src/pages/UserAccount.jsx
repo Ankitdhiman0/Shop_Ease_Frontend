@@ -25,7 +25,7 @@ function UserAccount() {
   const fetchUserProfile = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`/market-mate/user/account`);
+      const res = await axios.get(`/user/account`);
       setUser(res.data.user);
       setFormData({
         name: res.data.user.name || "",
@@ -92,10 +92,7 @@ function UserAccount() {
         updateData.newPassword = formData.newPassword;
       }
 
-      const res = await axios.put(
-        `/market-mate/user/account/update`,
-        updateData,
-      );
+      const res = await axios.put(`/user/account/update`, updateData);
 
       setUser(res.data.user);
       setEditing(false);

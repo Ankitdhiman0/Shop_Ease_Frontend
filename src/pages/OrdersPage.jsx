@@ -12,7 +12,7 @@ function OrdersPage() {
     const fetchOrders = async () => {
       try {
         setLoading(true);
-        const res = await axios.get(`/market-mate/user/orders`);
+        const res = await axios.get(`/user/orders`);
         setOrders(res.data.orders || []);
       } catch (error) {
         console.error("Failed to fetch orders:", error);
@@ -25,7 +25,7 @@ function OrdersPage() {
 
   const cancelOrder = async (orderId) => {
     try {
-      await axios.delete(`/market-mate/user/orders/${orderId}/cancel`);
+      await axios.delete(`/user/orders/${orderId}/cancel`);
       setOrders(
         orders.map((order) =>
           order._id === orderId
@@ -40,7 +40,7 @@ function OrdersPage() {
 
   const markAsDelivered = async (orderId) => {
     try {
-      await axios.put(`/market-mate/user/order/${orderId}/delivered`, {});
+      await axios.put(`/user/order/${orderId}/delivered`, {});
       setOrders(
         orders.map((order) =>
           order._id === orderId

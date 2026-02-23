@@ -29,7 +29,7 @@ function ProductDetails() {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await axios.get(`/market-mate/product/find/${id}`);
+        const res = await axios.get(`/product/find/${id}`);
         setProduct(res.data.product);
       } catch (err) {
         console.error(err);
@@ -44,10 +44,7 @@ function ProductDetails() {
 
   const toggleWishlist = async () => {
     try {
-      const res = await axios.post(
-        `/market-mate/user/wishlist/${product._id}`,
-        {},
-      );
+      const res = await axios.post(`/user/wishlist/${product._id}`, {});
 
       const isWishlisted = res.data.wishlisted;
       setWishlisted(isWishlisted);
@@ -62,10 +59,9 @@ function ProductDetails() {
     try {
       setCartLoading(true);
       // eslint-disable-next-line no-unused-vars
-      const res = await axios.post(
-        `/market-mate/user/cart/${product._id}/add`,
-        { quantity: 1 },
-      );
+      const res = await axios.post(`/user/cart/${product._id}/add`, {
+        quantity: 1,
+      });
     } catch (error) {
       console.error("Add to cart error:", error.response?.data?.message);
     } finally {

@@ -12,7 +12,7 @@ function UpdateCarousel() {
   useEffect(() => {
     const fetchCarousel = async () => {
       try {
-        const res = await axios.get(`/market-mate/user/new/carousel`);
+        const res = await axios.get(`/user/new/carousel`);
 
         if (res.data?.data) {
           setCarouselId(res.data.data._id);
@@ -57,7 +57,7 @@ function UpdateCarousel() {
 
     try {
       setLoading(true);
-      await axios.delete(`/market-mate/user/carousel/delete/${carouselId}`, {
+      await axios.delete(`/user/carousel/delete/${carouselId}`, {
         withCredentials: true,
       });
 

@@ -16,7 +16,7 @@ function AddressesPage() {
     const getAllAddresses = async () => {
       try {
         setLoading(true);
-        const res = await axios.get(`/market-mate/user/get/addresses`);
+        const res = await axios.get(`/user/get/addresses`);
         setAddresses(res.data.addresses || res.data || []);
       } catch (error) {
         console.error(error);
@@ -34,7 +34,7 @@ function AddressesPage() {
 
     try {
       setDeleting((prev) => ({ ...prev, [id]: true }));
-      await axios.delete(`/market-mate/user/address/${id}/remove`, {
+      await axios.delete(`/user/address/${id}/remove`, {
         withCredentials: true,
       });
       setAddresses((prev) => prev.filter((addr) => addr._id !== id));
@@ -56,7 +56,7 @@ function AddressesPage() {
     try {
       setSettingDefault((prev) => ({ ...prev, [id]: true }));
       await axios.post(
-        `/market-mate/user/address/${id}/setdefault`,
+        `/user/address/${id}/setdefault`,
         {},
         { withCredentials: true },
       );

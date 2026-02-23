@@ -23,13 +23,13 @@ function Header() {
 
   const handleSearch = () => {
     if (!query.trim()) return;
-    navigate(`/market-mate/search?query=${encodeURIComponent(query.trim())}`);
+    navigate(`/shop-ease/search?query=${encodeURIComponent(query.trim())}`);
     setQuery("");
   };
 
   const handleLogout = async () => {
     try {
-      await axios.get(`/market-mate/user/logout`);
+      await axios.get(`/user/logout`);
     } catch (err) {
       console.error(err);
     }

@@ -11,7 +11,7 @@ function ProductReviews({ productId }) {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const res = await axios.get(`/market-mate/product/find/${productId}`);
+        const res = await axios.get(`/product/find/${productId}`);
         setReviews(res.data.product.reviews || []);
       } catch (error) {
         console.error(error);
@@ -24,7 +24,7 @@ function ProductReviews({ productId }) {
     if (!rating || !comment.trim()) return;
     try {
       setLoading(true);
-      const res = await axios.post(`/market-mate/product/${productId}/review`, {
+      const res = await axios.post(`/product/${productId}/review`, {
         rating,
         comment,
       });

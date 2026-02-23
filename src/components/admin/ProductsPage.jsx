@@ -35,7 +35,7 @@ function ProductsPage() {
       };
 
       const res = await axios.get(
-        `/market-mate/user/admin/products`, // Fixed API path
+        `/user/admin/products`, // Fixed API path
         {
           params,
         },

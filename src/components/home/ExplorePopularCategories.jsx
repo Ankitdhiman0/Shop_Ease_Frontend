@@ -38,9 +38,9 @@ function ExplorePopularCategories() {
                 <button
                   onClick={() =>
                     navigate(
-                      `/market-mate/search?query=${encodeURIComponent(
-                        cat.category.toLocaleLowerCase().trim()
-                      )}`
+                      `/shop-ease/search?query=${encodeURIComponent(
+                        cat.category.toLocaleLowerCase().trim(),
+                      )}`,
                     )
                   }
                   className="w-fit px-6 py-2.5 rounded-xl bg-white text-black text-sm font-semibold hover:bg-gray-100 active:bg-gray-200 transition-all duration-200 shadow-lg hover:shadow-xl  active:translate-y-0 will-change-transform"
