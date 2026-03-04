@@ -39,14 +39,14 @@ function UpdateProduct() {
             target: p.target || "",
             price: p.price || "",
             discount: p.discount || "",
-            image: null, // IMPORTANT
+            image: p.image || null,
             specs: p.specs?.length ? p.specs : [{ key: "", value: "" }],
             offers: p.offers?.length ? p.offers : [{ title: "", discount: "" }],
           });
         }
       } catch (err) {
         console.error(err);
-        navigate("/market-mate/seller/dashboard");
+        navigate("/shop-ease/seller/dashboard");
       } finally {
         setLoading(false);
       }
@@ -125,7 +125,7 @@ function UpdateProduct() {
       const res = await axios.post(`/product/update/${id}`, formData);
 
       if (res.data?.success) {
-        navigate("/market-mate/seller/dashboard");
+        navigate("/shop-ease/seller/dashboard");
       }
     } catch (err) {
       console.error(err);
@@ -135,7 +135,6 @@ function UpdateProduct() {
 
   if (loading) return <div className="text-white p-6">Loading...</div>;
 
-  /* ---------------- UI ---------------- */
   return (
     <main className="min-h-screen bg-black text-white">
       <Header />
@@ -293,7 +292,7 @@ function UpdateProduct() {
                 accept="image/*"
                 onChange={handleChange}
                 className="hidden"
-                required
+                required={!form.image} // Require if no existing image
               />
             </div>
 

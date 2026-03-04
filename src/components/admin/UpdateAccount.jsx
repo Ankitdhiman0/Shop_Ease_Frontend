@@ -80,7 +80,7 @@ function UpdateAccount() {
       setSuccess("Profile updated successfully!");
 
       setTimeout(() => {
-        navigate("/market-mate/admin/account");
+        navigate("/shop-ease/admin/account");
       }, 1500);
     } catch (error) {
       setError(error.response?.data?.message || "Failed to update profile");
@@ -100,7 +100,7 @@ function UpdateAccount() {
       <header className="bg-black border border-white/20 rounded-2xl px-6 py-4">
         <div className="w-full mx-auto flex items-center justify-between">
           <Link
-            to="/market-mate/admin/account"
+            to="/shop-ease/admin/account"
             className="text-lg font-semibold text-white hover:text-gray-300 transition-colors flex items-center gap-2"
           >
             ← Back to Account

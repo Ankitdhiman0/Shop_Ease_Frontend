@@ -49,7 +49,7 @@ function AddressesPage() {
   const handleEditAddress = (address) => {
     // Store address in localStorage/sessionStorage for edit form
     localStorage.setItem("editingAddress", JSON.stringify(address));
-    navigate("/market-mate/user/address/register");
+    navigate("/shop-ease/user/address/register");
   };
 
   const handleSetDefault = async (id) => {
@@ -100,7 +100,7 @@ function AddressesPage() {
             <h1 className="text-2xl font-black tracking-tight">My Addresses</h1>
           </div>
           <button
-            onClick={() => navigate("/market-mate/user/address/register")}
+            onClick={() => navigate("/shop-ease/user/address/register")}
             className="bg-emerald-500 hover:bg-emerald-600 text-white text-xs py-3 px-8 rounded-xl flex items-center gap-2 transition-all duration-200"
           >
             Add New Address

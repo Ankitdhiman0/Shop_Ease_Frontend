@@ -89,12 +89,13 @@ function UpdateCarousel() {
 
       formData.append("productLinks", JSON.stringify(productLinks));
 
-      await axios.put("/market-mate/user/carousel/update", formData, {
+      await axios.put("/user/carousel/update", formData, {
         withCredentials: true,
       });
 
       setSuccess("Carousel updated successfully");
-    } catch {
+    } catch (error) {
+      console.error("Update carousel error:", error.response?.data || error);
       setError("Update failed");
     } finally {
       setLoading(false);

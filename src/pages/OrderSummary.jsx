@@ -98,7 +98,7 @@ function OrderSummary() {
         setShowSuccessPopup(false);
       }, 2000);
 
-      navigate("/market-mate/user/orders");
+      navigate("/shop-ease/user/orders");
     } catch (error) {
       console.error("Order error:", error.response?.data);
       alert(error.response?.data?.message || "Order placement failed");

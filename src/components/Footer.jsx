@@ -14,7 +14,7 @@ function Footer() {
             </div>
             <div>
               <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-                MarketMate
+                Shop-Ease
               </h3>
               <p className="text-xs sm:text-sm text-gray-400 mt-1">
                 Your tech destination
@@ -187,7 +187,7 @@ function Footer() {
             {/* Copyright + Legal links */}
             <div className="flex flex-col lg:flex-row items-center gap-2 lg:gap-6 text-[11px] sm:text-xs text-gray-500 w-full lg:w-auto">
               <p className="text-center lg:text-left shrink-0">
-                &copy; 2025 MarketMate. All rights reserved.
+                &copy; 2025 Shop-Ease. All rights reserved.
               </p>
               <div className="flex flex-wrap justify-center lg:justify-end gap-3 flex-1 lg:flex-none">
                 <a

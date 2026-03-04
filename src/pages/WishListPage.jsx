@@ -47,6 +47,8 @@ function WishListPage() {
       await axios.post(`/user/cart/${productId}/add`, {
         quantity: 1,
       });
+
+      navigate("/shop-ease/user/cart");
     } catch (error) {
       console.error(error);
     }
@@ -171,7 +173,7 @@ function WishListPage() {
             </p>
 
             <Link
-              to="/market-mate/home"
+              to="/shop-ease/home"
               className="px-6 py-2 bg-linear-to-r from-white to-gray-100 text-black font-medium rounded-lg hover:from-gray-100 hover:to-white transition-all text-sm inline-flex items-center gap-1"
             >
               Start Shopping

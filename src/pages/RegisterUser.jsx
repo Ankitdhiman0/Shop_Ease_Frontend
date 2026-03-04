@@ -50,7 +50,7 @@ function RegisterUser() {
     try {
       setLoading(true);
 
-      await axios.post("/market-mate/user/otp/request", {
+      await axios.post("/user/otp/request", {
         email: form.email,
         purpose: "register",
       });
@@ -89,7 +89,7 @@ function RegisterUser() {
     try {
       setLoading(true);
 
-      await axios.post("/market-mate/user/register", {
+      await axios.post("/user/register", {
         email: form.email,
         name: form.name,
         password: form.password,
@@ -108,7 +108,7 @@ function RegisterUser() {
       });
 
       setTimeout(() => {
-        navigate("/market-mate/login");
+        navigate("/shop-ease/login");
       }, 2000);
     } catch (err) {
       setError(
@@ -123,8 +123,10 @@ function RegisterUser() {
     <main className="bg-black w-full min-h-screen flex flex-col p-2 space-y-[1vh]">
       <header className="text-white/80 border border-white/20 rounded-2xl px-4 py-2 flex justify-between items-center">
         <div className="text-sm leading-tight">
-          <h1 className="font-bold text-lg">Market</h1>
-          <h1 className="font-bold text-lg">Mate</h1>
+          <h1 className="font-bold text-lg">Shop-Ease</h1>
+          <p className="text-xs text-gray-400">
+            Your Ultimate E-commerce Companion
+          </p>
         </div>
       </header>
 
@@ -134,13 +136,13 @@ function RegisterUser() {
             //{" "}
             <img
               src="/Darkshell2012.jpeg"
-              alt="Market Mate"
+              alt="Shop-Ease Background"
               className="absolute inset-0 w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-black/50" />
             <div className="relative z-10 h-full flex flex-col justify-end p-6 text-white">
               <h1 className="text-3xl font-medium tracking-wider mb-2">
-                Market-Mate
+                Shop-Ease
               </h1>
               <p className="text-sm text-gray-300">
                 Join the new era of ecommerce. Buy, sell, and manage products
@@ -249,7 +251,7 @@ function RegisterUser() {
             <p className="text-sm text-gray-400 mt-6">
               Already have an account?{" "}
               <Link
-                to="/market-mate/login"
+                to="/shop-ease/login"
                 className="text-white hover:underline"
               >
                 Login

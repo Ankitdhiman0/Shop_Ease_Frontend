@@ -49,7 +49,7 @@ function ProductDetails() {
       const isWishlisted = res.data.wishlisted;
       setWishlisted(isWishlisted);
 
-      navigate("/market-mate/user/wishlist");
+      navigate("/shop-ease/user/wishlist");
     } catch (error) {
       console.error(error);
     }
@@ -62,6 +62,8 @@ function ProductDetails() {
       const res = await axios.post(`/user/cart/${product._id}/add`, {
         quantity: 1,
       });
+
+      navigate("/shop-ease/user/cart");
     } catch (error) {
       console.error("Add to cart error:", error.response?.data?.message);
     } finally {

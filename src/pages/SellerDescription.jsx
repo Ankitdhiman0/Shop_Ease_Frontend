@@ -8,7 +8,7 @@ function SellerDescription() {
 
   const handleAgreeAndContinue = () => {
     if (!isAgreed) return;
-    navigate("/market-mate/seller/company/register");
+    navigate("/shop-ease/seller/company/register");
   };
 
   return (

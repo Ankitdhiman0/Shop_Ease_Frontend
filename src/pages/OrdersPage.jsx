@@ -94,7 +94,7 @@ function OrdersPage() {
               Your orders will appear here once you start shopping.
             </p>
             <Link
-              to="/market-mate/home"
+              to="/shop-ease/home"
               className="px-10 py-4 bg-white/10 backdrop-blur-xl text-white font-bold rounded-2xl hover:bg-white/20 transition-all border border-white/20 shadow-2xl"
             >
               Start Shopping

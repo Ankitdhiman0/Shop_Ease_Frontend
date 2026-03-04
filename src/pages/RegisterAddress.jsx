@@ -20,7 +20,7 @@ function RegisterAddress() {
   const [locLoading, setLocLoading] = useState(false);
   const [locError, setLocError] = useState("");
 
-  const ukPhoneRegex = /^(\+44\s?\d{2,4}|\(?0\d{2,4}\)?)\s?\d{3,4}\s?\d{3,4}$/;
+  const indianMobileRegex = /^(?:\+91|91|0)?[6-9]\d{9}$/;
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -93,8 +93,8 @@ function RegisterAddress() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!ukPhoneRegex.test(form.phone)) {
-      alert("Enter a valid UK phone number");
+    if (!indianMobileRegex.test(form.phone)) {
+      alert("Enter a valid Indian phone number");
       return;
     }
 
@@ -109,7 +109,7 @@ function RegisterAddress() {
         ...form,
         phone: form.phone.replace(/\s+/g, ""),
       });
-      navigate("/market-mate/user/addresses");
+      navigate("/shop-ease/user/addresses");
     } catch (error) {
       console.error(error);
       alert("Failed to save address");
@@ -126,7 +126,7 @@ function RegisterAddress() {
         {/* Header */}
         <div className="flex items-center gap-3 mb-8">
           <button
-            onClick={() => navigate("/market-mate/home")}
+            onClick={() => navigate("/shop-ease/home")}
             className="p-2 bg-white/10 border border-white/20 rounded-xl hover:bg-white/20 transition-colors"
           >
             <ArrowLeft className="w-5 h-5" />
@@ -181,7 +181,7 @@ function RegisterAddress() {
               <input
                 type="text"
                 name="phone"
-                placeholder="+44 123 456 7890"
+                placeholder="+91 1234567890"
                 value={form.phone}
                 onChange={handleChange}
                 className="w-full p-3 bg-black/30 border border-white/20 rounded-xl text-base placeholder-white/30 focus:border-emerald-400 focus:outline-none transition-all"
@@ -197,7 +197,7 @@ function RegisterAddress() {
               <input
                 type="text"
                 name="street"
-                placeholder="123 High Street"
+                placeholder="Street Name or Number"
                 value={form.street}
                 onChange={handleChange}
                 className="w-full p-3 bg-black/30 border border-white/20 rounded-xl text-base placeholder-white/30 focus:border-emerald-400 focus:outline-none transition-all"
@@ -213,7 +213,7 @@ function RegisterAddress() {
                 <input
                   type="text"
                   name="city"
-                  placeholder="London"
+                  placeholder="City Name"
                   value={form.city}
                   onChange={handleChange}
                   className="w-full p-3 bg-black/30 border border-white/20 rounded-xl text-base placeholder-white/30 focus:border-emerald-400 focus:outline-none transition-all"
@@ -226,7 +226,7 @@ function RegisterAddress() {
                 <input
                   type="text"
                   name="pincode"
-                  placeholder="SW1A 1AA"
+                  placeholder="Postal Code"
                   value={form.pincode}
                   onChange={handleChange}
                   className="w-full p-3 bg-black/30 border border-white/20 rounded-xl text-base placeholder-white/30 focus:border-emerald-400 focus:outline-none transition-all"
@@ -243,7 +243,7 @@ function RegisterAddress() {
               <input
                 type="text"
                 name="state"
-                placeholder="Greater London"
+                placeholder="State"
                 value={form.state}
                 onChange={handleChange}
                 className="w-full p-3 bg-black/30 border border-white/20 rounded-xl text-base placeholder-white/30 focus:border-emerald-400 focus:outline-none transition-all"

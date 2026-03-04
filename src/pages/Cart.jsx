@@ -46,9 +46,9 @@ function Cart() {
 
   const handleNavigate = () => {
     if (addressLength > 0) {
-      navigate("/market-mate/order/summary");
+      navigate("/shop-ease/order/summary");
     } else {
-      navigate("/market-mate/user/address/register");
+      navigate("/shop-ease/user/address/register");
     }
   };
 

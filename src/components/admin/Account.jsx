@@ -26,7 +26,7 @@ function Account() {
   };
 
   const handleUpdateProfile = () => {
-    navigate("/market-mate/admin/account/update");
+    navigate("/shop-ease/admin/account/update");
   };
 
   if (loading) {
@@ -43,7 +43,7 @@ function Account() {
       <header className=" border-b border-gray-700 px-6 py-4">
         <div className="max-w-full mx-auto flex items-center justify-between">
           <Link
-            to="/market-mate/admin/dashboard"
+            to="/shop-ease/admin/dashboard"
             className="text-lg  text-white hover:text-gray-300 transition-colors"
           >
             ← Back to Dashboard

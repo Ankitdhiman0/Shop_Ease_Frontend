@@ -39,12 +39,12 @@ function Login() {
 
       // ROLE BASED NAVIGATION
       if (user?.isAdmin) {
-        navigate("/market-mate/admin/description", {
+        navigate("/shop-ease/admin/description", {
           state: { user },
         });
       } else {
         localStorage.setItem("user", JSON.stringify(user));
-        navigate("/market-mate/home", {
+        navigate("/shop-ease/home", {
           state: { user },
         });
       }
@@ -61,12 +61,14 @@ function Login() {
     <main className="bg-black w-full min-h-screen  p-2 flex flex-col space-y-[1vh]">
       <header className="text-white/80 border border-white/20 rounded-2xl px-4 py-2 flex justify-between items-center">
         <div className="text-sm leading-tight">
-          <h1 className="font-bold text-lg">Market</h1>
-          <h1 className="font-bold text-lg">Mate</h1>
+          <h1 className="font-bold text-lg">Shop-Ease</h1>
+          <p className="text-xs text-gray-400">
+            Your Ultimate E-commerce Companion
+          </p>
         </div>
 
         <p className="text-xs bg-black/40 px-3 py-1 rounded-full backdrop-blur-sm border border-white/20">
-          Welcome to Market-Mate
+          Welcome to Shop-Ease
         </p>
       </header>
 
@@ -121,7 +123,7 @@ function Login() {
             <p className="text-sm text-gray-400 mt-6">
               Don’t have an account?{" "}
               <Link
-                to="/market-mate/register"
+                to="/shop-ease/register"
                 className="text-white hover:underline"
               >
                 Register
@@ -132,13 +134,13 @@ function Login() {
           <div className="relative w-1/2 h-full rounded-2xl overflow-hidden hidden md:block">
             <img
               src="/c.jpg"
-              alt="Market Mate"
+              alt="Shop-Ease"
               className="absolute inset-0 w-full h-full object-cover"
             />
             <div className="absolute inset-0 " />
             <div className="relative z-10 h-full flex flex-col justify-end p-6 text-white">
               <h1 className="special-text text-3xl font-medium tracking-wider mb-2">
-                Market-Mate
+                Shop-Ease
               </h1>
               <p className="text-sm text-gray-200">
                 Buy, sell, and manage products with speed and simplicity.

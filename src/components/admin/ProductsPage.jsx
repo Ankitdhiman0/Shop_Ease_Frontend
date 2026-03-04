@@ -97,7 +97,7 @@ function ProductsPage() {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div>
             <h1
-              onClick={() => navigate("/market-mate/admin/dashboard")}
+              onClick={() => navigate("/shop-ease/admin/dashboard")}
               className=" flex items-center text-2xl font-bold"
             >
               <ArrowBigLeft /> Home

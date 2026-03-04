@@ -36,19 +36,19 @@ function Header() {
 
     localStorage.removeItem("user");
     setMobileOpen(false);
-    navigate("/market-mate/login", { replace: true });
+    navigate("/shop-ease/login", { replace: true });
   };
 
   const handleRedirect = () => {
     if (user?.isSeller) {
-      navigate("/market-mate/seller/dashboard");
+      navigate("/shop-ease/seller/dashboard");
     } else {
-      navigate("/market-mate/seller/description");
+      navigate("/shop-ease/seller/description");
     }
   };
 
   const handleWishlist = () => {
-    navigate("/market-mate/user/wishlist");
+    navigate("/shop-ease/user/wishlist");
     setMobileOpen(false);
   };
 
@@ -58,12 +58,12 @@ function Header() {
         {/* Logo + Search */}
         <div className="flex items-center gap-4 flex-1">
           <h1
-            onClick={() => navigate("/market-mate/home")}
+            onClick={() => navigate("/shop-ease/home")}
             className="text-white cursor-pointer text-lg leading-none tracking-wider"
           >
-            Market
+            Shop
             <br />
-            Mate
+            Ease
           </h1>
 
           <div className="relative flex-1 max-w-lg">
@@ -89,20 +89,20 @@ function Header() {
           </button>
           <button
             title="Orders"
-            onClick={() => navigate("/market-mate/user/orders")}
+            onClick={() => navigate("/shop-ease/user/orders")}
             className="p-2 hover:bg-white/20 text-white/70 rounded-full"
           >
             <ShoppingBag />
           </button>
           <button
             title="cart"
-            onClick={() => navigate("/market-mate/user/cart")}
+            onClick={() => navigate("/shop-ease/user/cart")}
             className="p-2 hover:bg-white/20 text-white/70 rounded-full"
           >
             <ShoppingCart />
           </button>
           <button
-            onClick={() => navigate("/market-mate/account")}
+            onClick={() => navigate("/shop-ease/account")}
             title="account"
             className="px-3 py-2 text-xs flex gap-2 text-white/70 hover:bg-white/20 rounded-full"
           >
@@ -110,7 +110,7 @@ function Header() {
           </button>
           <button
             title="manage addresses"
-            onClick={() => navigate("/market-mate/user/addresses")}
+            onClick={() => navigate("/shop-ease/user/addresses")}
             className="px-3 py-2 text-xs flex gap-2 text-white/70 hover:bg-white/20 rounded-full items-center"
           >
             <MapPin />
@@ -169,26 +169,26 @@ function Header() {
             Wishlist
           </button>
           <button
-            onClick={() => navigate("/market-mate/account")}
+            onClick={() => navigate("/shop-ease/account")}
             className="flex gap-3 text-white p-3 hover:bg-white/10 rounded-xl relative"
           >
             <User />
             Account
           </button>
           <button
-            onClick={() => navigate("/market-mate/user/orders")}
+            onClick={() => navigate("/shop-ease/user/orders")}
             className="flex gap-3 text-white p-3 hover:bg-white/10 rounded-xl"
           >
             <ShoppingBag /> Bag
           </button>
           <button
-            onClick={() => navigate("/market-mate/user/cart")}
+            onClick={() => navigate("/shop-ease/user/cart")}
             className="flex gap-3 text-white p-3 hover:bg-white/10 rounded-xl"
           >
             <ShoppingCart /> Cart
           </button>
           <button
-            onClick={() => navigate("/market-mate/user/addresses")}
+            onClick={() => navigate("/shop-ease/user/addresses")}
             className="flex gap-1 p-3   hover:bg-white/10 rounded-xl text-white"
           >
             <MapPin />

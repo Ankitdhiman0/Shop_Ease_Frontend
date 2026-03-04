@@ -12,7 +12,7 @@ function AdminDashboard() {
   const handleLogout = async () => {
     try {
       await axios.get(`/user/logout`);
-      navigate("/market-mate/login");
+      navigate("/shop-ease/login");
     } catch (error) {
       console.error("Logout error:", error);
     }
@@ -30,7 +30,7 @@ function AdminDashboard() {
             <h1 className="text-xl font-semibold tracking-wide text-white">
               Admin
             </h1>
-            <p className="text-xs text-white/50 mt-0.5">Market-Mate</p>
+            <p className="text-xs text-white/50 mt-0.5">Shop-Ease</p>
           </div>
         </div>
 
@@ -38,7 +38,7 @@ function AdminDashboard() {
         <div className="flex items-center gap-2">
           {/* Account Icon */}
           <Link
-            to="/market-mate/admin/account"
+            to="/shop-ease/admin/account"
             className="w-12 h-12 bg-white/10 hover:bg-white/20 border border-white/20 rounded-xl backdrop-blur-sm transition-all hover:scale-110 flex items-center justify-center shadow-lg hover:shadow-white/20 group"
             title="Account"
           >
@@ -59,7 +59,7 @@ function AdminDashboard() {
 
           {/* Products Icon */}
           <Link
-            to="/market-mate/admin/products"
+            to="/shop-ease/admin/products"
             className="w-12 h-12 bg-linear-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 rounded-xl transition-all hover:scale-110 shadow-lg hover:shadow-purple-500/30 flex items-center justify-center group"
             title="Products"
           >

@@ -7,7 +7,7 @@ function AdminDescription() {
 
   const handleContinue = () => {
     if (!accepted) return;
-    navigate("/market-mate/admin/dashboard");
+    navigate("/shop-ease/admin/dashboard");
   };
 
   return (

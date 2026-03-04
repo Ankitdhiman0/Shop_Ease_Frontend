@@ -259,7 +259,7 @@ function UserAccount() {
             <h2 className="text-2xl font-light text-white mb-8 flex items-center gap-3">
               📍 Addresses
               <Link
-                to="/market-mate/user/addresses"
+                to="/shop-ease/user/addresses"
                 className="ml-auto px-6 py-2 bg-white text-black text-sm font-light rounded-xl hover:bg-gray-200 transition-all border border-white whitespace-nowrap"
               >
                 Manage
@@ -310,7 +310,7 @@ function UserAccount() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <Link
-                to="/market-mate/user/orders"
+                to="/shop-ease/user/orders"
                 className="group flex flex-col items-center p-6 bg-black/40 hover:bg-black/60 rounded-2xl border border-white/10 transition-all hover:-translate-y-2 h-full"
               >
                 <div className="w-16 h-16 bg-white/20 group-hover:bg-white/30 rounded-2xl flex items-center justify-center mb-4 border border-white/30 transition-all">
@@ -325,7 +325,7 @@ function UserAccount() {
               </Link>
 
               <Link
-                to="/market-mate/user/wishlist"
+                to="/shop-ease/user/wishlist"
                 className="group flex flex-col items-center p-6 bg-black/40 hover:bg-black/60 rounded-2xl border border-white/10 transition-all hover:-translate-y-2 h-full"
               >
                 <div className="w-16 h-16 bg-white/20 group-hover:bg-white/30 rounded-2xl flex items-center justify-center mb-4 border border-white/30 transition-all">
@@ -340,7 +340,7 @@ function UserAccount() {
               </Link>
 
               <Link
-                to="/market-mate/user/addresses"
+                to="/shop-ease/user/addresses"
                 className="group flex flex-col items-center p-6 bg-black/40 hover:bg-black/60 rounded-2xl border border-white/10 transition-all hover:-translate-y-2 h-full"
               >
                 <div className="w-16 h-16 bg-white/20 group-hover:bg-white/30 rounded-2xl flex items-center justify-center mb-4 border border-white/30 transition-all">

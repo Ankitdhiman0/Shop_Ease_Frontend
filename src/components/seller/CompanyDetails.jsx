@@ -22,11 +22,11 @@ function CompanyDetails() {
   }, []);
 
   const handleUpdateNavigate = () => {
-    navigate("/market-mate/seller/company/register");
+    navigate("/shop-ease/seller/company/register");
   };
 
   const handleNewProductNavigate = () => {
-    navigate("/market-mate/seller/product/register");
+    navigate("/shop-ease/seller/product/register");
   };
 
   if (loading) {

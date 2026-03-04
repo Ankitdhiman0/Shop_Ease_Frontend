@@ -43,7 +43,7 @@ function AdminOrders() {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Link
-              to="/market-mate/admin/dashboard"
+              to="/shop-ease/admin/dashboard"
               className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
             >
               ← Back to Users

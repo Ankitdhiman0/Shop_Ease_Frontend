@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Header from "../components/Header";
 import axios from "../utils/AxiosInstance";
 import { useNavigate } from "react-router";
+import Footer from "../components/Footer";
 
 function SellerCompanyRegister() {
   const navigate = useNavigate();
@@ -32,7 +33,9 @@ function SellerCompanyRegister() {
     if (form.logo) formData.append("logo", form.logo);
 
     try {
-      const res = await axios.post(`/user/seller/company/register`, formData);
+      const res = await axios.post(`/user/seller/company/register`, formData, {
+        withCredentials: true,
+      });
 
       if (res.data?.success) {
         const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -45,7 +48,7 @@ function SellerCompanyRegister() {
         storedUser.isSeller = true;
         localStorage.setItem("user", JSON.stringify(storedUser));
 
-        navigate("/market-mate/seller/dashboard");
+        navigate("/shop-ease/seller/dashboard");
       }
     } catch (err) {
       console.error(err);
@@ -56,7 +59,7 @@ function SellerCompanyRegister() {
     <>
       <main className="min-h-screen bg-black text-white p-2">
         <Header />
-        <section className="flex justify-center px-4 py-6">
+        <section className="mb-2  flex justify-center px-4 py-6">
           <div className="w-full max-w-xl   border border-white/10 bg-black/60 backdrop-blur-sm rounded-xl p-5 shadow-[0_0_30px_rgba(255,255,255,0.05)]">
             <h1 className="text-xl font-semibold tracking-tight mb-0.5">
               Register Brand
@@ -158,6 +161,7 @@ function SellerCompanyRegister() {
             </form>
           </div>
         </section>
+        <Footer />
       </main>
     </>
   );
