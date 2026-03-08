@@ -133,7 +133,6 @@ function RegisterUser() {
       <div className="w-full flex items-center justify-center">
         <section className="h-[85vh] w-full rounded-3xl p-4 flex gap-4 md:bg-white/5 backdrop-blur-xl">
           <div className="relative w-1/2 h-full rounded-2xl overflow-hidden hidden md:block">
-            //{" "}
             <img
               src="/Darkshell2012.jpeg"
               alt="Shop-Ease Background"
