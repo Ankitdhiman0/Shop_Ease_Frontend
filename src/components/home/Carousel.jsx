@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 function Carousel() {
   const [items, setItems] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchCarousel = async () => {
@@ -15,14 +16,17 @@ function Carousel() {
         }
       } catch (err) {
         console.error(err);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchCarousel();
   }, []);
 
-  // Auto slide every 3 seconds
   useEffect(() => {
+    if (!items.length) return;
+
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % items.length);
     }, 3000);
@@ -30,11 +34,25 @@ function Carousel() {
     return () => clearInterval(interval);
   }, [items]);
 
+  // Skeleton Loader
+  if (loading) {
+    return (
+      <div className="w-full mx-auto rounded-2xl overflow-hidden">
+        <div className="w-full h-[25vh] md:h-[30vh] lg:h-[50vh] bg-gray-300 animate-pulse"></div>
+
+        <div className="flex justify-center gap-2 mt-3">
+          <div className="w-3 h-3 rounded-full bg-gray-300 animate-pulse"></div>
+          <div className="w-3 h-3 rounded-full bg-gray-300 animate-pulse"></div>
+          <div className="w-3 h-3 rounded-full bg-gray-300 animate-pulse"></div>
+        </div>
+      </div>
+    );
+  }
+
   if (!items.length) return null;
 
   return (
     <div className="w-full mx-auto relative overflow-hidden rounded-2xl">
-      {/* Images */}
       <div
         className="flex transition-transform duration-500"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
@@ -47,8 +65,7 @@ function Carousel() {
             className="w-full shrink-0"
           >
             <img
-              key={index}
-              src={item.image} // Base64 or URL
+              src={item.image}
               alt={`Carousel ${index + 1}`}
               className="w-full h-[25vh] md:h-[30vh] lg:h-[50vh] object-fill"
             />
@@ -56,7 +73,6 @@ function Carousel() {
         ))}
       </div>
 
-      {/* Dots */}
       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
         {items.map((_, index) => (
           <button
