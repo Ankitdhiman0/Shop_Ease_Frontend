@@ -28,7 +28,9 @@ function Login() {
     setLoading(true);
 
     try {
-      const res = await axios.post(`/user/login`, form);
+      const res = await axios.post(`/user/login`, form, {
+        withCredentials: true,
+      });
 
       if (!res.data?.success) {
         setError(res.data?.message || "Login failed");
