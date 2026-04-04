@@ -89,19 +89,13 @@ function RegisterUser() {
     try {
       setLoading(true);
 
-      await axios.post(
-        "/user/register",
-        {
-          email: form.email,
-          name: form.name,
-          password: form.password,
-          otp: form.otp,
-          purpose: "register",
-        },
-        {
-          withCredentials: true,
-        },
-      );
+      await axios.post("/user/register", {
+        email: form.email,
+        name: form.name,
+        password: form.password,
+        otp: form.otp,
+        purpose: "register",
+      });
 
       setSuccessMessage("Registration successful! Redirecting...");
 
